@@ -1,0 +1,106 @@
+<!DOCTYPE html> <html lang = "en"> <head>
+    <meta charset = "UTF-8">
+    <link rel = "stylesheet" href="style.css"> <title> My Form </title>
+    </head>
+    <body>
+        <header>
+    <h1>Person Database</h1>
+       </header>
+
+
+    <form action="/add" method="POST" > <fieldset>
+    <h3>Add new Person</h3> <label>Person Name</label> <input type ="text" id = 'empname
+    ' name="empname" placeholder="NHQ" required> <br><br>
+    <label>Age</label>
+    <input type="number" id = "Age" n ame="Age" placeholder="23" required>
+<label>Gender</label>
+<label>Salary</label>
+    <input type="text" id = "salary" name="salary" placeholder="23" required>
+    <br><br>
+     
+    <button type ="reset">Reset</button>
+    <button type ="submit">Submit</button>
+    </label>
+    </fieldset>
+</form>
+
+    
+<form action="/findperson" method="POST" > <fieldset>
+    <h3>View Person</h3>
+    <label>Person having age greater than</label>
+    <label>Age</label>
+<input type="number" id = "Age" name= "Age" placeholder="23" required>
+<br><br>
+<br><br>
+    
+<button type ="reset">Reset</button>
+<button type ="submit">Submit</button>
+ <br><br><br>
+</fieldset>
+</form>
+
+
+<form action="/update" method="POST">
+<fieldset>
+<h3>Update an employee</h3> <label>Person Name</label> <input type ="text" id = 'name' 
+name="empname" placeholder="name you want to update" required>
+<br><br>
+<label>New Name</label>
+<input type="text" id = "name" name="newname" placeholder="Maverick" required>
+<label>New Age</label>
+<input type="number" id = "age" n ame="newage" placeholder="Maverick" required>
+<br><br>
+<button type ="reset">Reset</button>
+
+<button type ="submit">Submit</button>
+</fieldset>
+
+
+
+</form>
+<form action="/delete" method="POST">
+<fieldset>
+<h3>Delete Person having Gender </h3>
+<label>Gender</label>
+<input type ="text" id = 'gender' name="gender" placeholder="Name you wish to dele
+te" required>
+<br><br>
+
+<button type ="reset">Reset</button> 
+<button type ="submit">Submit</button>
+        <br><br><br>
+</fieldset>
+</form>
+
+
+
+<form action="/Count" method="POST">
+<fieldset>
+<h3>Find Total Person in the document</h3>
+
+<button type ="reset">Reset</button>
+<button type ="submit">Submit</button>
+        <br><br><br>
+</fieldset>
+</form>
+
+<form action="/find" method="POST" > <fieldset>
+    <h3>Find Person</h3>
+    <label>Person having age lesser than</label>
+    <label>Age</label>
+<input type="number" id = "Age" name= "Age" placeholder="23" required>
+<br><br>
+<br><br>
+    
+<button type ="reset">Reset</button>
+<button type ="submit">Submit</button>
+ <br><br><br>
+</fieldset>
+</form>
+    </form>
+
+
+
+
+</body>
+</html>
