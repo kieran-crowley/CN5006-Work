@@ -27,7 +27,7 @@ app.get('/about',function (req,res){
 
 })
 
-app.get('/allbooks',function(req,res){
+app.get('/displaybooks',function(req,res){
     Books.find(function(err, allbook) {
         if(err) {
            console.log(err);
