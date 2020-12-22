@@ -13,4 +13,4 @@ console.log('connection is successful to'+ MONG_URI)
 
 module.exports=db
 
-//this is where everything saves to database
+//this is the mongodb connection to server. 

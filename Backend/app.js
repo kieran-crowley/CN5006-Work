@@ -1,21 +1,65 @@
 var express = require("express")
-let PersonModel = require('./PersonModel')
+let Books = require('./Books')
 let mongodbConnected=require('./MongodbConnect')
+const cors= require('cors');
+
 var app =express()
 var bodyparser=require("body-parser")
 const { format } = require("path") 
+const{responce}= require("express");
+
+
+app.use(cors());
+app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false})) 
 
+app.get('/',function(req,res){
+})
+
+app.get('/about',function (req,res){
+    res.send("This is a simple express application us ing mongodb express html and mongoose") 
+    Books.countDocuments().exec()
+    .then(count=>{
+    console.log("Total documents Count before addition :", count)
+    }) .catch(err => { 
+        console.error(err)
+    })
+
+})
+
+app.get('/allbooks',function(req,res){
+    Books.find(function(err, allbook) {
+        if(err) {
+           console.log(err);
+        } else { 
+            res.json(allbook);
+        }
+        
+    });
+});
+
+app.post('/addbooks', function(res,res)
+{
+    console.log("REF".req.body)
+    let newbook= new Books(req.body);
+    newbook.save()
+    .then(todo=>{
+        res.statusCode(200).json({'books': 'book added successfully'});
+    })
+    .catch(err =>{
+        res.statusCode(400).send('adding new book failed');
+    });
+})
 
 
-app.get('/',function(req,res){ res.sendFile('Person.html', { root: __dirname });
+/*app.get('/',function(req,res){ res.sendFile('Person.html', { root: __dirname });
 })
 
 
 
 app.get('/about',function (req,res){
 res.send("This is a simple express application us ing mongodb express html and mongoose") 
-PersonModel.countDocuments().exec()
+Books.countDocuments().exec()
 .then(count=>{
 console.log("Total documents Count before addition :", count)
 }) .catch(err => { 
@@ -126,7 +170,7 @@ app.post('/find', function(req,res){
 
     PAge=req.body.Age
      console.log("Page",PAge)
-      PersonModel.find({age:{$lt:PAge}})
+      Books.find({age:{$lt:PAge}})
              // find all users
             .sort({Salary: 1}) // sort ascending by firstName and salary only       
             .select('name Salary age')// Name and salary only
@@ -140,7 +184,9 @@ app.post('/find', function(req,res){
         console.error(err)})
     })
 
-
+*/
 app.listen(5000,function(){
 console.log("Server is running on the port 5000")
 })
+
+//server
