@@ -6,48 +6,51 @@ const cors= require('cors');
 var app =express()
 var bodyparser=require("body-parser")
 const { format } = require("path") 
-const{responce}= require("express");
-
+const{ responce }= require("express");
 
 app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false})) 
 
 app.get('/',function(req,res){
+
 })
 
 app.get('/about',function (req,res){
-    res.send("This is a simple express application us ing mongodb express html and mongoose") 
+
+    res.send("everything is running on one app") 
     Books.countDocuments().exec()
     .then(count=>{
+
     console.log("Total documents Count before addition :", count)
+
     }) .catch(err => { 
-        console.error(err)
+        console.error(err+"not working")
     })
 
 })
 
-app.get('/displaybooks',function(req,res){
+
+app.get('/allbooks',function(req,res){
     Books.find(function(err, allbook) {
         if(err) {
            console.log(err);
         } else { 
             res.json(allbook);
         }
-        
     });
 });
 
-app.post('/addbooks', function(res,res)
+app.post('/addbooks', function(req,res)
 {
-    console.log("REF".req.body)
+    console.log("Ref",req.body);
     let newbook= new Books(req.body);
     newbook.save()
-    .then(todo=>{
-        res.statusCode(200).json({'books': 'book added successfully'});
+    .then(todo => {
+        res.status(200).json({'books': 'book added successfully'});
     })
     .catch(err =>{
-        res.statusCode(400).send('adding new book failed');
+        res.status(400).send('adding new book failed');
     });
 })
 
