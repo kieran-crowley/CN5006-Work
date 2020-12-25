@@ -1,12 +1,13 @@
 let mongoose= require('mongoose')
 const BooksScheme= new mongoose.Schema({
-    bookname:{
+    booktitle:{
      type:String,
      required:true
     },
     pubyear:Number,
-    Title:String,
-    Topic:String
+    author:String,
+    Topic:String,
+    formate:String
 })
 
 

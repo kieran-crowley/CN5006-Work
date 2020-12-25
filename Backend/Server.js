@@ -48,9 +48,11 @@ app.post('/addbooks', function(req,res)
     newbook.save()
     .then(todo => {
         res.status(200).json({'books': 'book added successfully'});
+        console.log("200");
     })
     .catch(err =>{
         res.status(400).send('adding new book failed');
+        console.log("400");
     });
 })
 
