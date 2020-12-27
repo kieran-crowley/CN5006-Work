@@ -30,7 +30,6 @@ app.get('/about',function (req,res){
 
 })
 
-
 app.get('/allbooks',function(req,res){
     Books.find(function(err, allbook) {
         if(err) {
@@ -41,7 +40,23 @@ app.get('/allbooks',function(req,res){
     });
 });
 
-app.post('/addbooks', function(req,res)
+app.post('/getBook', function(req,res){
+      Books.find({//query in here, check if this works//
+                                    })
+             // find all users
+            .sort({Pubyear: 1}) // sort ascending by firstName and salary only       
+            .select({name:1,Salary:1})// Name and salary only
+            .limit(10) // limit to 10 items
+            .exec() // execute the query
+            .then(docs => {
+                console.log("Reteriving records ",docs)
+    res.send(docs)//maybe back to json
+    })
+    .catch(err => {
+        console.error(err)})
+    })
+
+app.get('/addbooks', function(req,res)
 {
     console.log("Ref",req.body);
     let newbook= new Books(req.body);
@@ -55,6 +70,33 @@ app.post('/addbooks', function(req,res)
         console.log("400");
     });
 })
+
+app.get('/updatebook', function(req,res){
+    Pname=books.req.body.booktitle //this is from the html file. find way to connect to react. 
+    Pnewname=req.body.Pubyear
+    PnewAge=req.body.author
+    Books.findOneAndUpdate({ name: Pname },{" $set":{name:Pnewname,age:PnewAge}}).exec()
+    .then(docs=>{
+    console.log("Update for what i get is ",Pname
+    ,Pnewname,PnewAge) 
+    console.log(docs); // Success
+    }).catch(function(error){
+    console.log(error); // Failure 
+    });
+    })
+
+    app.post('/delete', function(req,res){
+        Pgender=req.body.gender 
+        books.findOneAndDelete({Gender:Pgender }//pgender will be from react. 
+    ).exec()
+    .then(docs=>{ 
+        console.log("Deleted") 
+    console.log(docs); // Success
+    }).catch(function(error){
+         console.log(error); // Failure
+    });
+    })//find how to connect this to react and update etc...
+
 
 
 /*app.get('/',function(req,res){ res.sendFile('Person.html', { root: __dirname });

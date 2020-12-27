@@ -4,7 +4,7 @@ const BooksScheme= new mongoose.Schema({
      type:String,
      required:true
     },
-    pubyear:Number,
+    PubYear:Number,
     author:String,
     Topic:String,
     formate:String
@@ -14,3 +14,4 @@ const BooksScheme= new mongoose.Schema({
 module.exports= mongoose.model('abcmodel',BooksScheme,
 'BookCollection')
 //this is the schema done
+//books come from Here
