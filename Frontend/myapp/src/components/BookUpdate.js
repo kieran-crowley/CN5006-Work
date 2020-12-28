@@ -43,16 +43,18 @@ useEffect(() => {
     e.preventDefault();
     const bookdata={
             booktitle:state.booktitle,
+            
             PubYear:state.PubYear,
-            author:state.author,            
+            author:state.author,
+            
             Topic:state.Topic,
             formate:state.formate
 
     }
     
-    axios.post(url+"updatebook"+props.match.params.id, bookdata)
+    axios.post(url+"updatebook/"+props.match.params.id, bookdata)
     .then(res => console.log(res.data));
-    console.log("done");
+    
 
    }
   return (
@@ -123,9 +125,11 @@ onChange={handleChange}
         <label>
           Publication Year (between 1980 and 2020):
           <input
-            type="range"name="PubYear"
-            min="1980"max="2020"
-value={state.PubYear}
+            type="range"
+            name="PubYear"
+            min="1980"
+            max="2020"
+            value={state.PubYear}
             onChange={handleChange}
           />
           

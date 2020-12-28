@@ -40,7 +40,10 @@ app.get('/allbooks',function(req,res){
     });
 });
 
-app.post('/getBook', function(req,res){
+app.get('/getbook/:id',function(req, res) { let id = req.params.id;
+    Books.findById(id, function(err, book) { res.json(book);
+    }); });
+/*app.post('/getBook', function(req,res){
       Books.find({//query in here, check if this works//
                                     })
              // find all users
@@ -54,12 +57,13 @@ app.post('/getBook', function(req,res){
     })
     .catch(err => {
         console.error(err)})
-    })
+    })*/
 
-app.get('/addbooks', function(req,res)
+app.post('/addbooks', function(req,res)
 {
-    console.log("Ref",req.body);
+    console.log("Ref",req.body)
     let newbook= new Books(req.body);
+    console.log("newbook->",newbook)
     newbook.save()
     .then(todo => {
         res.status(200).json({'books': 'book added successfully'});
@@ -71,7 +75,32 @@ app.get('/addbooks', function(req,res)
     });
 })
 
-app.get('/updatebook', function(req,res){
+app.post('/updatebook/:id',function(req, res) {
+    let id = req.params.id;
+    let updatedbook = new Books(req.body);
+    console.log("update id",id,"newbook->",updatedbook)
+
+    Books.findByIdAndUpdate(id, 
+    {
+            booktitle:updatedbook.booktitle, 
+            PubYear:updatedbook.PubYear, 
+            author:updatedbook.author, 
+            Topic:updatedbook.Topic, 
+            formate:updatedbook.formate
+    }
+    ,
+    function (err, docs) {
+        if (err){
+            console.log(err) 
+        }
+else{
+res.status(200).json({'books': 'book updated successfully'});
+}
+}
+    )
+});
+   
+/*app.get('/updatebook', function(req,res){
     Pname=books.req.body.booktitle //this is from the html file. find way to connect to react. 
     Pnewname=req.body.Pubyear
     PnewAge=req.body.author
@@ -83,9 +112,21 @@ app.get('/updatebook', function(req,res){
     }).catch(function(error){
     console.log(error); // Failure 
     });
-    })
+    })*/
 
-    app.post('/delete', function(req,res){
+
+    app.post('/deleteBook/:id',function(req, res) { let id = req.params.id;
+        console.log("deleting")
+        Books.findByIdAndDelete(id,function (err, docs) {
+            if (err){ console.log(err)
+            } else{
+            res.status(200).send('Books deleted');
+            }
+        }
+        )
+    });
+
+    /*app.post('/delete', function(req,res){
         Pgender=req.body.gender 
         books.findOneAndDelete({Gender:Pgender }//pgender will be from react. 
     ).exec()
@@ -95,7 +136,7 @@ app.get('/updatebook', function(req,res){
     }).catch(function(error){
          console.log(error); // Failure
     });
-    })//find how to connect this to react and update etc...
+    })//find how to connect this to react and update etc...*/
 
 
 
@@ -234,6 +275,5 @@ app.post('/find', function(req,res){
 */
 app.listen(5000,function(){
 console.log("Server is running on the port 5000")
-})
-
+});
 //server
