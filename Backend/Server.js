@@ -1,5 +1,5 @@
 var express = require("express")
-let Books = require('./Books')
+let Books = require('./Covid')
 let mongodbConnected=require('./MongodbConnect')
 const cors= require('cors');
 
@@ -82,11 +82,17 @@ app.post('/updatebook/:id',function(req, res) {
 
     Books.findByIdAndUpdate(id, 
     {
-            booktitle:updatedbook.booktitle, 
+            /*booktitle:updatedbook.booktitle, 
             PubYear:updatedbook.PubYear, 
             author:updatedbook.author, 
             Topic:updatedbook.Topic, 
             formate:updatedbook.formate
+            */
+    County:updatedbook.County,
+    State:updatedbook.State,
+    cases:updatedbook.cases,
+    death:updatedbook.death,
+    date:updatedbook.date
     }
     ,
     function (err, docs) {

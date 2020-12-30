@@ -3,11 +3,18 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 const Booksdata = props => (
     <tr>
-        <td>{props.book.booktitle}</td>
-        <td>{props.book.PubYear}</td>
-        <td>{props.book.author}</td>
-        <td>{props.book.Topic}</td>
-        <td>{props.book.formate}</td>
+
+        /*
+        County:state.County,
+    State:state.State,
+    cases:state.cases,
+    death:state.death,
+    date:state.date*/
+        <td>{props.book.County}</td>
+        <td>{props.book.State}</td>
+        <td>{props.book.cases}</td>
+        <td>{props.book.death}</td>
+        <td>{props.book.date}</td>
         <td>
             <Link to={"/edit/"+props.book._id}>Edit</Link>
         </td>
@@ -19,11 +26,17 @@ const Booksdata = props => (
 function Func_DeleteBook(props) 
  {
     const [state, setState] = useState({
-        booktitle: "",
+        /*booktitle: "",
         author: "",
         formate: "",
         Topic:"",
         PubYear: 1990,
+        */
+       County:"",
+    State:"",
+    cases:"",
+    death:"",
+    date:""//this used to be a date. 
       
     });
       //let url= "http://localhost:5000/"
@@ -83,6 +96,8 @@ function Func_DeleteBook(props)
                         <th>Auhtor</th>
                         <th>Subject</th>
                         <th>Formate</th>
+
+                        
                        
                     </tr>
                 </thead>

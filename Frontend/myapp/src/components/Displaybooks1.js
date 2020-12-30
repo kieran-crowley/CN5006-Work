@@ -15,12 +15,14 @@ import axios from 'axios';
 // Note the books data must be in the same order as defined in the schema and saved in the mongodb
 const Booksdata = props => (
     <tr>
-        <td>{props.book.booktitle}</td>
-        <td>{props.book.PubYear}</td>
-        <td>{props.book.author}</td>
-        <td>{props.book.Topic}</td>
-        <td>{props.book.formate}</td>
+        <td>{props.book.County}</td>
+        <td>{props.book.date}</td>
+        <td>{props.book.State}</td>
+        <td>{props.book.death}</td>
+        <td>{props.book.cases}</td>
         <td>
+
+    
             <Link to={"/edit/"+props.book._id}>Edit</Link>
         </td>
         <td>
@@ -61,11 +63,11 @@ export default class ShowBooksList extends Component {
                 <table className="table table-striped" class="table table-hover"style={{ marginTop: 20 }} >
                     <thead>
                         <tr>
-                            <th>Book Title</th>
-                            <th>Pub Year</th>
-                            <th>Auhtor</th>
-                            <th>Subject</th>
-                            <th>Formate</th>
+                            <th>County</th>
+                            <th>Date</th>
+                            <th>State</th>
+                            <th>Deaths</th>
+                            <th>Cases</th>
                            
                         </tr>
                     </thead>
