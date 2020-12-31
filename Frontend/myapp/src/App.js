@@ -5,19 +5,30 @@ import Book_Form from "./components/AddBook"
 import ShowBooksList from "./components/Displaybooks1.js"
 import Book_UpDateForm from "./components/BookUpdate"
 import Func_DeleteBook from "./components/DeleteBook"
+/*2.4. Add separate end points for update case, death and date for a given state and county, the updated record should be displayed on the browser.(marks 5)//just need update to screen. 
+2.5 It should also have an separate endpoint to show total number of cases and deaths for a given state and county, the updated record should be displayed on the browser (marks 5)
+2.6 It should also have an separate endpoint for deleting a document for given state and county (marks 4)
+2.7. it should have an endpoint to display first 20 documents from the covid data base for a given date and state. the data should be displayed on browser.(marks 4)
+2.8. it should have an endpoint to display the states where Cases are more than the given value entered by the user in a single day. (marks 4)
+2.9 . it should also have an endpoint to display your laptop information using os package to the user (marks 5 )
+
+*/
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="container">
-        <center><h2> On-Line Book Library using React   </h2> </center>
+        <center><h2> On-Line Covid Library using React   </h2> </center>
            <br/>
             
             <nav className="navbar navbar-expand-lg navbar-light bg-success">
-            <Link to="/" className="navbar-brand"><h4>Add a Book</h4></Link>
-            <Link to="/DisplayBooks" className="navbar-brand"><h4>Display All books</h4> </Link>
-            <Link to="/BookUpdate" className="navbar-brand"><h4>Update book</h4> </Link>
-            <Link to="/DeleteBook" className="navbar-brand"><h4>Delete A Book</h4> </Link>
+            <Link to="/" className="navbar-brand"><h4>Add Covid Data</h4></Link>
+            <Link to="/DisplayBooks" className="navbar-brand"><h4>Display Covid Data</h4> </Link>
+            <Link to="/BookUpdate" className="navbar-brand"><h4>Total Cases</h4> </Link>
+            <Link to="/DeleteBook" className="navbar-brand"><h4>Delete Deaths In County/State</h4> </Link>
+            <Link to="/DeleteBook" className="navbar-brand"><h4>More cases them </h4> </Link>
+            <Link to="/DeleteBook" className="navbar-brand"><h4>Laptop Information</h4> </Link>
+            <Link to="/DeleteBook" className="navbar-brand"><h4>Display 20</h4> </Link>
             
             </nav>
           <br/>

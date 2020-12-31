@@ -59,7 +59,7 @@ export default class ShowBooksList extends Component {
     render() {
         return (
             <div>
-                <h3>Book List</h3>
+                <h3>Covid Data</h3>
                 <table className="table table-striped" class="table table-hover"style={{ marginTop: 20 }} >
                     <thead>
                         <tr>

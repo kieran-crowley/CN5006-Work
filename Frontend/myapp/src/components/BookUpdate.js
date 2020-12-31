@@ -68,80 +68,59 @@ useEffect(() => {
       <div className="form-group"> 
 
 
-          <label>County: </label>
-          <input  className="form-control" type="text" name="County"
+      <label>County: </label>
+          <input  className="form-control"
+            type="text" name="County"
             value={state.County}
-            onChange={handleChange}
-          />
-      </div>
-        
-        <div className="form-group">
-        <label>State </label>
-          <input  className="form-control" name="State"
-            value={state.State}
-            onChange={handleChange}
-          />
+            onChange={handleChange}/>
         </div>
         
         <div className="form-group">
+          <label>
+            State:{" "}
+            <select className="form-control"
+            name="cases" value={state.State}
+            onChange={handleChange}>
+            <option value="England">England</option>
+            <option value="Wales" >Wales</option>
+            <option value="Scotland">Scotland</option>
+            <option value="Northern Ireland">Northern Ireland</option>
+            <option value="Other">Other</option>
+          </select>
+          </label>
+        </div>
+        
+       <div className="form-group"> 
+          <label>Cases: </label>
+          <input  className="form-control"
+            type="number" name="cases"
+            value={state.cases}
+            onChange={handleChange}/>
+        </div>
+
+
+        <div className="form-group"> 
+          <label>Deaths: </label>
+          <input  className="form-control"
+            type="number" name="death"
+            value={state.death}
+            onChange={handleChange}/>
+        </div> 
+        
+        <div>
         <label>
-          Cases :{" "}
-          <select className="form-control" name="cases"
-            value={state.Topic}
-onChange={handleChange}
-          >
-           
-<option value="Computer Science">Computer Science</option>
-<option value="Programming" >Programming</option>
-<option value="Data Science">Data Sceince</option>
-<option value="AI">AI</option>
-<option value="Engineering">Engineering</option>
-</select>
-</label>
+         Date Year (between 1980 and 2020):
+          <input
+            type="date"name="date"
+            min="1980"max="2020" value={state.date}
+            onChange={handleChange} />
+        </label>
+        </div>
 
 
-</div>
-<div className="form-group">
-<label>Deaths: </label>
-<div className="form-check form-check-inline">
-<input className="form-check-label"
-type="radio"
-name="death"
-value="Hard Copy"
-checked={state.death === "Hard Copy"}
-onChange={handleChange}
-/>
-
-<label className="form-check-label"> Hard Copy </label>
-</div>
-<div className="form-check form-check-inline">
-<input className="form-check-label"
-type="radio"
-name="death"
-value="Electronic Copy"
-checked={state.death === "Electronic Copy"}
-onChange={handleChange}
-/>
-
-<label className="form-check-label"> Electronic Copy</label>
-</div>
-</div>
-
-<br />
-<br />
-<label>
-Date (between 1980 and 2020):
-<input
-type="range"
-name="date"
-min="1980"
-max="2020"
-value={state.date}
-onChange={handleChange}
-/>
 
 
-</label>
+
 <center>
 <div className="form-group">
             <input type="submit" value="UpDate" className="btn btn-primary" />

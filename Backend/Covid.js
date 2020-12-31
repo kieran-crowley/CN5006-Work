@@ -5,10 +5,11 @@ const CovidScheme= new mongoose.Schema({
      required:true
     },
     State:String,
-    cases:String,
+    cases:Number,
     death:String,
     date:String
 })
+//maybe need to fix the above. 
 
 
 module.exports= mongoose.model('abcmodel',CovidScheme,

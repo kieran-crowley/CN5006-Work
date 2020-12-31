@@ -91,13 +91,11 @@ function Func_DeleteBook(props)
             <table className="table table-striped" style={{ marginTop: 20 }} >
                 <thead>
                     <tr>
-                        <th>Book Title</th>
-                        <th>Pub Year</th>
-                        <th>Auhtor</th>
-                        <th>Subject</th>
-                        <th>Formate</th>
-
-                        
+                        <th>County</th>
+                        <th>State</th>
+                        <th>cases</th>
+                        <th>death</th>
+                        <th>date</th>
                        
                     </tr>
                 </thead>
