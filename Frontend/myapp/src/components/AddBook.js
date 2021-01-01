@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { Redirect } from "react-router-dom";
 //this is all the html which should come from backend. 
 //once submitted make it show added data.
 function Book_Form() {
@@ -28,6 +29,15 @@ function Book_Form() {
   };
   const OnSubmit=(e) =>
   {
+
+    alert( 
+    "Added data: \nCounty: "+state.County+ "\nState: " +state.State+"\nCases: "+ state.cases+"\nDeaths: "+state.death+"\nDate: "+ state.date)
+
+
+
+    
+
+    
   
    e.preventDefault();
    const bookdata={
@@ -67,9 +77,9 @@ function Book_Form() {
 
         <div className="form-group">
           <label>
-            State:{" "}
+            State: {" "}
             <select className="form-control"
-            name="cases" value={state.State}
+            name="State" value={state.State}
             onChange={handleChange}>
             <option value="England">England</option>
             <option value="Wales" >Wales</option>

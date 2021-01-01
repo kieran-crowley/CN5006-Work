@@ -5,6 +5,7 @@ import Book_Form from "./components/AddBook"
 import ShowBooksList from "./components/Displaybooks1.js"
 import Book_UpDateForm from "./components/BookUpdate"
 import Func_DeleteBook from "./components/DeleteBook"
+import ShowBooksList20 from "./components/Displaybooks120.js"
 /*2.4. Add separate end points for update case, death and date for a given state and county, the updated record should be displayed on the browser.(marks 5)//just need update to screen. 
 2.5 It should also have an separate endpoint to show total number of cases and deaths for a given state and county, the updated record should be displayed on the browser (marks 5)
 2.6 It should also have an separate endpoint for deleting a document for given state and county (marks 4)
@@ -23,19 +24,20 @@ class App extends Component {
             
             <nav className="navbar navbar-expand-lg navbar-light bg-success">
             <Link to="/" className="navbar-brand"><h4>Add Covid Data</h4></Link>
-            <Link to="/DisplayBooks" className="navbar-brand"><h4>Display Covid Data</h4> </Link>
+            <Link to="/DisplayBooks1" className="navbar-brand"><h4>Display Covid Data</h4> </Link>
             <Link to="/BookUpdate" className="navbar-brand"><h4>Total Cases</h4> </Link>
             <Link to="/DeleteBook" className="navbar-brand"><h4>Delete Deaths In County/State</h4> </Link>
             <Link to="/DeleteBook" className="navbar-brand"><h4>More cases them </h4> </Link>
             <Link to="/DeleteBook" className="navbar-brand"><h4>Laptop Information</h4> </Link>
-            <Link to="/DeleteBook" className="navbar-brand"><h4>Display 20</h4> </Link>
+            <Link to="/DisplayBooks120" className="navbar-brand"><h4>Display 20</h4> </Link>
             
             </nav>
           <br/>
           <Route path="/" exact component={Book_Form} />
           <Route path="/edit/:id" component={Book_UpDateForm} />
           <Route path="/Delete/:id" component={Func_DeleteBook} />
-          <Route path="/DisplayBooks" component={ShowBooksList} /> 
+          <Route path="/DisplayBooks1" component={ShowBooksList} /> 
+          <Route path="/DisplayBooks120" component={ShowBooksList20} /> 
         </div>
       </Router>//this maybe needs to be fixed. 
     );

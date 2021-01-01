@@ -38,7 +38,7 @@ export default class ShowBooksList extends Component {
         this.state = {books: []}; // books is the name of the state variable here
     }
     componentDidMount() {
-        axios.get('http://localhost:5000/allbooks/')//('http://localhost:5000/allbooks')//'http://localhost:5000/todos/'
+        axios.get('http://localhost:5000/allbooks20/')//('http://localhost:5000/allbooks')//'http://localhost:5000/todos/'
             .then(response => {
                 console.log("response.data",response.data)
                 this.setState({ books: response.data });  // set state variable with received data
@@ -79,7 +79,3 @@ export default class ShowBooksList extends Component {
         )
     }
 }
-
-
-
-

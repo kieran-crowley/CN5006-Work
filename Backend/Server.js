@@ -5,12 +5,16 @@ const cors= require('cors');
 
 var app =express()
 var bodyparser=require("body-parser")
-const { format } = require("path") 
-const{ responce }= require("express");
-
-app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false})) 
+//app.use(bodyparser.json());
+//const { format } = require("path") 
+//const{ responce }= require("express");
+
+
+app.use(cors());
+console.log("COVID DATA",Books)
+
 
 app.get('/',function(req,res){
 
@@ -40,9 +44,31 @@ app.get('/allbooks',function(req,res){
     });
 });
 
-app.get('/getbook/:id',function(req, res) { let id = req.params.id;
-    Books.findById(id, function(err, book) { res.json(book);
-    }); });
+app.get('/allbooks20',function(req,res){
+    Books.find(function(err, allbook) {
+        if(err) {
+           console.log(err);
+        } else { 
+            res.json(allbook);
+        }
+    }).sort({County: 1}) // sort ascending by County Query parameters alphabetically
+    
+    .limit(10) // limit to 10 items
+    .exec() // execute the query
+    .then(docs => { //Read the query result
+    console.log(docs)
+    })
+    .catch(err => {
+    console.error(err)
+    });
+});
+
+app.get('/getbook/:id',function(req, res) { 
+    let id = req.params.id;
+    Books.findById(id, function(err, book) { 
+        res.json(book);
+    }); 
+});
 /*app.post('/getBook', function(req,res){
       Books.find({//query in here, check if this works//
                                     })
@@ -121,12 +147,17 @@ res.status(200).json({'books': 'book updated successfully'});
     })*/
 
 
-    app.post('/deleteBook/:id',function(req, res) { let id = req.params.id;
+    app.post('/deleteBook/:id',function(req, res) { 
+        let id = req.params.id;
         console.log("deleting")
         Books.findByIdAndDelete(id,function (err, docs) {
-            if (err){ console.log(err)
-            } else{
+            if (err){
+                 console.log(err)
+            } 
+            else{
+
             res.status(200).send('Books deleted');
+            console.log("deleted");
             }
         }
         )
