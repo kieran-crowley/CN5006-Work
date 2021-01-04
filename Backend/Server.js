@@ -53,7 +53,7 @@ app.get('/allbooks20',function(req,res){
         }
     }).sort({County: 1}) // sort ascending by County Query parameters alphabetically
     
-    .limit(10) // limit to 10 items
+    .limit(20) // limit to 20 items
     .exec() // execute the query
     .then(docs => { //Read the query result
     console.log(docs)
@@ -69,6 +69,16 @@ app.get('/getbook/:id',function(req, res) {
         res.json(book);
     }); 
 });
+
+app.get('/getbooks/:id',function(req, res) { 
+    let id = req.params.id;
+    
+    Books.find({County:id},function(err, book) { 
+        res.json(book);
+    }); 
+}); //this is the working version of te application. 
+
+
 /*app.post('/getBook', function(req,res){
       Books.find({//query in here, check if this works//
                                     })
