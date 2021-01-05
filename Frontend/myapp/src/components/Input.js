@@ -1,63 +1,68 @@
-import React, { useState } from "react";
+import React, { Component } from 'react';
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
-//this is all the html which should come from backend. 
-//once submitted make it show added data.
-function Query() {
-  let url= "http://localhost:5000/Input" 
-  const [state, setState] = useState({
 
+export default class Query extends Component {
 
-    County: "",// current state
-  });
+    constructor(props) {
+        super(props);
 
- 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setState({
-      ...state,
-      [e.target.name]: value,
-    });
-  };
-  const OnSubmit=(e) =>
-  {
-    alert( 
-      "Added data: \nCounty: "+state.County+ "\nState: " +state.State+"\nCases: "+ state.cases+"\nDeaths: "+state.death+"\nDate: "+ state.date)
+    this.onChangeCounty = this.onChangeCounty.bind(this); // books is the name of the state variable here
+    this.onSubmit = this.onSubmit.bind(this)
+
+     this.state= {
+      county:''
+    }
+  }
+
+    onChangeCounty(e) {
+    this.setState({
+    county: e.target.value
+})
+    }
   
-   e.preventDefault();
-   const bookdata={
-    County:state.County}
-    
-   
-   axios.post("http://localhost:5000/getBooks/"+state.County)
-   .then(res => console.log(res.data));
-   }
+onSubmit(e) {
+  e.preventDefault();
 
-  return (
-   <div style={{marginTop: 10}}>
-      <h3>Add Covid Data</h3>
-      <form onSubmit={OnSubmit} method="Post">
-        
-        
-         <div className="form-group"> 
-          <label>County: </label>
-          <input  className="form-control"
-            type="text" name="County"
-            value={state.County}
-            onChange={handleChange}/>
-        </div>
-        
-        <div className="form-group">
-        <center>
-            <input type="submit" value="Add this Data" className="btn btn-primary" />
-        </center>                   
-        </div>
-                
-      </form>
-      
-    </div>
-  );
- 
+  const book=  {
+  county: this.state.county
+  }
+
+  console.log("hiiiiiiii"+book.county);
+
+  axios.post('http://localhost:5000/Find', book)
+  .then(res => console.log(res.data));
+
+this.setState({
+  county: ''
+})
+}
+  
+
+  //window.location='/';//maybe
+
+
+
+    
+  render() {
+    return (
+      <div>
+        <h3>Create New User</h3>
+        <form onSubmit={this.onSubmit}>
+          <div className="form-group"> 
+            <label>Username: </label>
+            <input  type="text"
+                required
+                className="form-control"
+                value={this.state.county}
+                onChange={this.onChangeCounty}
+                />
+          </div>
+          <div className="form-group">
+            <input type="submit" value="Create User" className="btn btn-primary" />
+          </div>
+        </form>
+      </div>
+    )
+  }
 }
 
-export default Query;

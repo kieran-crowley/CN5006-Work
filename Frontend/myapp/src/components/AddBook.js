@@ -30,6 +30,7 @@ function Book_Form() {
   const OnSubmit=(e) =>
   {
 
+    window.location='DisplayBooks1';//maybe
     alert( 
     "Added data: \nCounty: "+state.County+ "\nState: " +state.State+"\nCases: "+ state.cases+"\nDeaths: "+state.death+"\nDate: "+ state.date)
 

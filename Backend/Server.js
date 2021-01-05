@@ -70,12 +70,15 @@ app.get('/getbook/:id',function(req, res) {
     }); 
 });
 
-app.get('/getbooks/:id',function(req, res) { 
-    let id = req.params.id;
+app.get('/Find',function(req, res) { 
+    let thisCounty = req.params.County;
     
-    Books.find({County:id},function(err, book) { 
+    Books.find(thisCounty,function(err, book) { 
+        console.log(book);
         res.json(book);
-    }); 
+        console.log("dik");
+      
+    }); //maybe needs ID. 
 }); //this is the working version of te application. 
 
 

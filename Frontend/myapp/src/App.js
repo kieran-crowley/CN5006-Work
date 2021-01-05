@@ -28,8 +28,8 @@ class App extends Component {
             <Link to="/" className="navbar-brand"><h4>Add Covid Data</h4></Link>
             <Link to="/DisplayBooks1" className="navbar-brand"><h4>Display Covid Data</h4> </Link>
             <Link to="/Input" className="navbar-brand"><h4>Delete Deaths In County/State</h4> </Link>
-            <Link to="/DeleteBook" className="navbar-brand"><h4>More cases them </h4> </Link>
-            <Link to="/DeleteBook" className="navbar-brand"><h4>Laptop Information</h4> </Link>
+            <Link to="/CasesMore" className="navbar-brand"><h4>More cases them </h4> </Link>
+            <Link to="foaptopingo" className="navbar-brand"><h4>Laptop Information</h4> </Link>
             <Link to="/DisplayBooks120" className="navbar-brand"><h4>Display 20</h4> </Link>
             
             </nav>
@@ -40,12 +40,12 @@ class App extends Component {
           <Route path="/DisplayBooks1" component={ShowBooksList} /> 
           <Route path="/DisplayBooks120" component={ShowBooksList20} /> 
           <Route path="/Input" component={Query} /> 
-          
-          <Route path="/idk/:id" component={Query} />
+        
 
         </div>
       </Router>//id comes from the form itself. these made inside above. 
     );//edit sucks component.
+    //above are helper methods.
   }
 }
 
