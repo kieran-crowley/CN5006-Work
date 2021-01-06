@@ -64,20 +64,23 @@ app.get('/allbooks20',function(req,res){
 });
 
 app.get('/getbook/:id',function(req, res) { 
-    let id = req.params.id;
+    let ide = req.params.id;
     Books.findById(id, function(err, book) { 
         res.json(book);
     }); 
 });
 
 app.get('/Find',function(req, res) { 
-    let thisCounty = req.params.County;
+    let thisCounty=req.params.County;
     
     Books.find(thisCounty,function(err, book) { 
         console.log(book);
         res.json(book);
-        console.log("dik");
-      
+        console.log(thisCounty);
+      /////////
+    
+
+
     }); //maybe needs ID. 
 }); //this is the working version of te application. 
 

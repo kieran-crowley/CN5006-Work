@@ -40,12 +40,13 @@ class App extends Component {
           <Route path="/DisplayBooks1" component={ShowBooksList} /> 
           <Route path="/DisplayBooks120" component={ShowBooksList20} /> 
           <Route path="/Input" component={Query} /> 
+
         
 
         </div>
       </Router>//id comes from the form itself. these made inside above. 
     );//edit sucks component.
-    //above are helper methods.
+    //above are helper methods
   }
 }
 
