@@ -29,7 +29,8 @@ onSubmit(e) {
 
   console.log("hiiiiiiii"+book.county);
 
-  axios.post('http://localhost:5000/Find', book)//post not working.
+
+  axios.get('http://localhost:5000/Find/'+this.state.county, book)//post not working.
   .then(res => console.log(res.data));
 
 this.setState({

@@ -62,6 +62,8 @@ function Book_Form() {
    axios.post(url+"addbooks", bookdata)
    .then(res => console.log(res.data));
    }
+
+   
   return (
    <div style={{marginTop: 10}}>
       <h3>Add Covid Data</h3>

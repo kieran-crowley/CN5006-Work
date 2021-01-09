@@ -2,6 +2,7 @@ var express = require("express")
 let Books = require('./Covid')
 let mongodbConnected=require('./MongodbConnect')
 const cors= require('cors');
+let os=require("os");
 
 var app =express()
 var bodyparser=require("body-parser")
@@ -19,6 +20,21 @@ console.log("COVID DATA",Books)
 app.get('/',function(req,res){
 
 })
+
+app.get('/infoo',function(req,res){
+
+    res.json({
+        tempDir: os.tmpdir(),
+        hostname: os.hostname(),
+        os: os.platform(),
+        uptime: os.uptime()/3600,
+        userInfo: os.userInfo(),
+        memory: os.totalmem()/1000000000,
+        freemem: os.freemem()/1000000000,
+        CPU: os.cpus(),
+        Network: os.networkInterfaces()
+    });
+});
 
 app.get('/about',function (req,res){
 
@@ -64,19 +80,18 @@ app.get('/allbooks20',function(req,res){
 });
 
 app.get('/getbook/:id',function(req, res) { 
-    let ide = req.params.id;
+    let id = req.params.id;
     Books.findById(id, function(err, book) { 
         res.json(book);
     }); 
 });
 
-app.get('/Find',function(req, res) { 
-    let thisCounty=req.params.County;
-    
-    Books.find(thisCounty,function(err, book) { 
+app.get('/newfind/:thiscounty:thisstate',function(req, res) { 
+    let thisCounty=req.params.thiscounty
+    let thisState=req.params.thisstate
+    Books.find(thisCounty,thisState, function(err, book) { 
         console.log(book);
         res.json(book);
-        console.log(thisCounty);
       /////////
     
 
@@ -163,6 +178,22 @@ res.status(200).json({'books': 'book updated successfully'});
     })*/
 
 
+    app.get('/Find/:thiscounty:thisstate',function(req, res) { 
+        let thisCounty=req.params.thiscounty;
+        let thisstate=req.params.thisstate;
+
+        Books.find(thisCounty,thisstate,function(err, book) { 
+            console.log(book);
+            res.json(book);
+          /////////
+        
+    
+    
+        }); //maybe needs ID. 
+    })
+
+
+
     app.post('/deleteBook/:id',function(req, res) { 
         let id = req.params.id;
         console.log("deleting")
@@ -178,6 +209,8 @@ res.status(200).json({'books': 'book updated successfully'});
         }
         )
     });
+
+    
 
     /*app.post('/delete', function(req,res){
         Pgender=req.body.gender 
